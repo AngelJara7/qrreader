@@ -11,19 +11,19 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text("Historial"),
+        title: const Text("Historial"),
         actions: [
           IconButton(
-            icon: Icon(Icons.delete_forever),
+            icon: const Icon(Icons.delete_forever),
             onPressed: () {},
           )
         ],
       ),
-      body: Center(
+      body: const Center(
          child: Text('HomeScreen'),
       ),
-      bottomNavigationBar: CustomNavigationBar(),
-      floatingActionButton: ScanButton(),
+      bottomNavigationBar: const CustomNavigationBar(),
+      floatingActionButton: const ScanButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

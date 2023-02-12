@@ -8,7 +8,7 @@ class CustomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: 0,
       elevation: 0,
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.map),
           label: "Mapa"
