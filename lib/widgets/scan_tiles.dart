@@ -21,6 +21,7 @@ class ScanTiles extends StatelessWidget {
         background: Container(
           color: Colors.red,
         ),
+        // ignore: non_constant_identifier_names
         onDismissed: (DismissDirection) => {
           Provider.of<ScanListProvider>(context, listen: false).borrarScansPorId(scans[i].id!.toInt())
         },
