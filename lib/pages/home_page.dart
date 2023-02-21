@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_reader/pages/direcciones_pages.dart';
-import 'package:qr_reader/pages/mapas_pages.dart';
+import 'package:qr_reader/pages/maps_pages.dart';
+import 'package:qr_reader/providers/scan_list_provider.dart';
 import 'package:qr_reader/providers/ui_provider.dart';
 import 'package:qr_reader/widgets/custom_navigatiorbar.dart';
 import 'package:qr_reader/widgets/scan_button.dart';
@@ -19,7 +20,9 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.delete_forever),
-            onPressed: () {},
+            onPressed: () {
+              Provider.of<ScanListProvider>(context, listen: false).borrarTodos();
+            },
           )
         ],
       ),
@@ -42,15 +45,19 @@ class _HomePageBody extends StatelessWidget {
     
     final currentIndex = uiProvider.selectedMenuOpt;
 
+    final scanListProvider = Provider.of<ScanListProvider>(context, listen: false);
+
     switch (currentIndex) {
       case 0:
-        return MapasPages();
+        scanListProvider.cargarScanPorTipo("geo");
+        return const MapasPages();
 
       case 1:
-        return DireccionesPages();
+        scanListProvider.cargarScanPorTipo("http");
+        return const DireccionesPages();
         
       default: 
-        return MapasPages();
+        return const MapasPages();
     }
 
   }

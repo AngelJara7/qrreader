@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_reader/widgets/scan_tiles.dart';
 
 class MapasPages extends StatelessWidget {
    
@@ -6,8 +7,6 @@ class MapasPages extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Mapas Pages"),
-    );
+    return const ScanTiles(tipo: "http");
   }
 }
