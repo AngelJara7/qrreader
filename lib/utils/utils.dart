@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+
+import 'package:url_launcher/url_launcher.dart';
 import 'package:qr_reader/models/scan_model.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-Future<void> launchUrl(BuildContext context, ScanModel scan) async {
 
-  final url = scan.valor;
+launchUrl(BuildContext context, ScanModel scan) async {
 
-  if (scan.tipo == "http") {
-    if (await canLaunchUrlString(url)) {
-      launchUrlString(url);
-    } else {
-      throw Exception('Could not launch $url');
-    }
+  final Uri url = Uri.parse(scan.valor);
+  
+  if (scan.tipo == 'http') {
+     if (!await launchUrlString(scan.valor)) {
+    throw Exception('Could not launch $url');
+  }
   } else {
-    Navigator.pushNamed(context, "mapa", arguments: scan);
+    Navigator.pushNamed(context, 'mapa', arguments: scan);
   }
 }
